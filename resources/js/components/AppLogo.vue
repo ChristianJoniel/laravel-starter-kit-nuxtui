@@ -7,6 +7,6 @@ defineProps<{
 <template>
     <div class="flex items-center gap-2 font-semibold">
         <UIcon name="i-lucide-zap" class="size-5 shrink-0 text-primary" />
-        <span v-if="!collapsed" class="truncate">Sutra</span>
+        <span v-if="!collapsed" class="truncate">Nuxt UI Starter Kit</span>
     </div>
 </template>

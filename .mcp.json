@@ -13,7 +13,7 @@
                 "/Applications/Herd.app/Contents/Resources/herd-mcp.phar"
             ],
             "env": {
-                "SITE_PATH": "/Users/christiannegron/Herd/sutra-vue"
+                "SITE_PATH": "/Users/christiannegron/Herd/laravel-starter-kit-nuxtui"
             }
         }
     }
