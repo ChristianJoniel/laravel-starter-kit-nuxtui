@@ -32,3 +32,12 @@ yarn-error.log
 # Auto-generated type declarations
 auto-imports.d.ts
 components.d.ts
+
+# Laravel Boost generated files
+.mcp.json
+CLAUDE.md
+AGENTS.md
+boost.json
+.agents/
+.claude/
+.cursor/
