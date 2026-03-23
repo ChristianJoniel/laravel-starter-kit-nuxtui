@@ -1,20 +1,13 @@
 <script setup lang="ts">
 import { useForm, usePage } from '@inertiajs/vue3';
-import { useToast } from '@nuxt/ui/runtime/composables/useToast';
-import { z } from 'zod';
 import AuthLayout from '@/layouts/auth.vue';
 import { store } from '@/routes/login';
 
 defineOptions({ layout: AuthLayout });
-
+ 
 const page = usePage();
 const toast = useToast();
 
-const schema = z.object({
-    email: z.string().email('Please enter a valid email address'),
-    password: z.string().min(1, 'Password is required'),
-    remember: z.boolean().optional(),
-});
 
 const form = useForm({
     email: '',
@@ -31,7 +24,7 @@ const fields = [
 const providers = [
     {
         label: 'Google',
-        icon: 'i-simple-icons-google',
+        icon: 'i-simple-icons:google',
         color: 'neutral' as const,
         variant: 'subtle' as const,
         block: true,
@@ -39,7 +32,7 @@ const providers = [
     },
     {
         label: 'GitHub',
-        icon: 'i-simple-icons-github',
+        icon: 'i-simple-icons:github',
         color: 'neutral' as const,
         variant: 'subtle' as const,
         block: true,
@@ -73,7 +66,7 @@ function onSubmit(event: { data: { email: string; password: string; remember?: b
             icon="i-lucide-lock"
             :fields="fields"
             :providers="providers"
-            :schema="schema"
+
             :submit="{ label: 'Sign in', block: true }"
             :loading="form.processing"
             @submit="onSubmit"

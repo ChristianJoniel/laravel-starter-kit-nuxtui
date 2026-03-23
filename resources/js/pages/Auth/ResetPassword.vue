@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
-import { z } from 'zod';
+
 import AuthLayout from '@/layouts/auth.vue';
 import { update } from '@/routes/password';
 
@@ -8,15 +8,6 @@ defineOptions({ layout: AuthLayout });
 
 const props = defineProps<{ token: string; email: string }>();
 
-const schema = z
-    .object({
-        password: z.string().min(8, 'Password must be at least 8 characters'),
-        password_confirmation: z.string(),
-    })
-    .refine((data) => data.password === data.password_confirmation, {
-        message: 'Passwords do not match',
-        path: ['password_confirmation'],
-    });
 
 const form = useForm({
     token: props.token,
@@ -47,7 +38,7 @@ function onSubmit(event: { data: { password: string; password_confirmation: stri
             title="Reset Password"
             icon="i-lucide-lock-keyhole"
             :fields="fields"
-            :schema="schema"
+
             :submit="{ label: 'Reset Password', block: true }"
             :loading="form.processing"
             @submit="onSubmit"

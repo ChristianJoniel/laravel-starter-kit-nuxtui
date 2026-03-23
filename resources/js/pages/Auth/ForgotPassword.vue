@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useForm, usePage } from '@inertiajs/vue3';
-import { z } from 'zod';
+
 import AuthLayout from '@/layouts/auth.vue';
 import { email } from '@/routes/password';
 
@@ -8,9 +8,6 @@ defineOptions({ layout: AuthLayout });
 
 const page = usePage();
 
-const schema = z.object({
-    email: z.string().email('Please enter a valid email address'),
-});
 
 const form = useForm({
     email: '',
@@ -41,7 +38,7 @@ function onSubmit(event: { data: { email: string } }) {
             title="Forgot password?"
             icon="i-lucide-key-round"
             :fields="fields"
-            :schema="schema"
+
             :submit="{ label: 'Send Reset Link', block: true }"
             :loading="form.processing"
             @submit="onSubmit"
