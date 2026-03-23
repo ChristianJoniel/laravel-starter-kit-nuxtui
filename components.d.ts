@@ -12,7 +12,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppLogo: typeof import('./resources/js/components/AppLogo.vue')['default']
+    UAlert: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Alert.vue')['default']
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
+    UAuthForm: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/AuthForm.vue')['default']
     UButton: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
     UColorModeButton: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/color-mode/ColorModeButton.vue')['default']
     UDashboardGroup: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/DashboardGroup.vue')['default']
@@ -24,6 +26,7 @@ declare module 'vue' {
     UFooter: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Footer.vue')['default']
     UHeader: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Header.vue')['default']
     UIcon: typeof import('./node_modules/@nuxt/ui/dist/runtime/vue/components/Icon.vue')['default']
+    ULink: typeof import('./node_modules/@nuxt/ui/dist/runtime/vue/overrides/inertia/Link.vue')['default']
     UMain: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Main.vue')['default']
     UNavigationMenu: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/NavigationMenu.vue')['default']
     UPageCTA: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/PageCTA.vue')['default']
