@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3';
 import { z } from 'zod';
-import AppLayout from '@/layouts/app.vue';
+import AuthLayout from '@/layouts/auth.vue';
 import { update } from '@/routes/password';
 
-defineOptions({ layout: AppLayout });
+defineOptions({ layout: AuthLayout });
 
 const props = defineProps<{ token: string; email: string }>();
 
@@ -42,43 +42,41 @@ function onSubmit(event: { data: { password: string; password_confirmation: stri
 </script>
 
 <template>
-    <div class="flex min-h-[calc(100vh-var(--ui-header-height)-var(--ui-footer-height,0px))] items-center justify-center">
-        <div class="w-full max-w-sm">
-            <UAuthForm
-                title="Reset Password"
-                icon="i-lucide-lock-keyhole"
-                :fields="fields"
-                :schema="schema"
-                :submit="{ label: 'Reset Password', block: true }"
-                :loading="form.processing"
-                @submit="onSubmit"
-            >
-                <template #validation>
-                    <UAlert
-                        v-if="form.errors.email"
-                        color="error"
-                        icon="i-lucide-alert-circle"
-                        :title="form.errors.email"
-                    />
-                    <UAlert
-                        v-if="form.errors.password"
-                        color="error"
-                        icon="i-lucide-alert-circle"
-                        :title="form.errors.password"
-                    />
-                </template>
+    <div>
+        <UAuthForm
+            title="Reset Password"
+            icon="i-lucide-lock-keyhole"
+            :fields="fields"
+            :schema="schema"
+            :submit="{ label: 'Reset Password', block: true }"
+            :loading="form.processing"
+            @submit="onSubmit"
+        >
+            <template #validation>
+                <UAlert
+                    v-if="form.errors.email"
+                    color="error"
+                    icon="i-lucide-alert-circle"
+                    :title="form.errors.email"
+                />
+                <UAlert
+                    v-if="form.errors.password"
+                    color="error"
+                    icon="i-lucide-alert-circle"
+                    :title="form.errors.password"
+                />
+            </template>
 
-                <template #footer>
-                    <p class="text-center text-sm text-muted">
-                        <ULink
-                            to="/login"
-                            class="text-primary font-medium"
-                        >
-                            Back to login
-                        </ULink>
-                    </p>
-                </template>
-            </UAuthForm>
-        </div>
+            <template #footer>
+                <p class="text-center text-sm text-muted">
+                    <ULink
+                        to="/login"
+                        class="text-primary font-medium"
+                    >
+                        Back to login
+                    </ULink>
+                </p>
+            </template>
+        </UAuthForm>
     </div>
 </template>

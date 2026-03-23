@@ -2,10 +2,10 @@
 import { useForm, usePage } from '@inertiajs/vue3';
 import { useToast } from '@nuxt/ui/runtime/composables/useToast';
 import { z } from 'zod';
-import AppLayout from '@/layouts/app.vue';
+import AuthLayout from '@/layouts/auth.vue';
 import { store } from '@/routes/login';
 
-defineOptions({ layout: AppLayout });
+defineOptions({ layout: AuthLayout });
 
 const page = usePage();
 const toast = useToast();
@@ -59,60 +59,58 @@ function onSubmit(event: { data: { email: string; password: string; remember?: b
 </script>
 
 <template>
-    <div class="flex min-h-[calc(100vh-var(--ui-header-height)-var(--ui-footer-height,0px))] items-center justify-center">
-        <div class="w-full max-w-sm">
-            <UAlert
-                v-if="page.props.status"
-                :title="page.props.status"
-                color="success"
-                icon="i-lucide-check-circle"
-                class="mb-4"
-            />
+    <div>
+        <UAlert
+            v-if="page.props.status"
+            :title="page.props.status"
+            color="success"
+            icon="i-lucide-check-circle"
+            class="mb-4"
+        />
 
-            <UAuthForm
-                title="Welcome back!"
-                icon="i-lucide-lock"
-                :fields="fields"
-                :providers="providers"
-                :schema="schema"
-                :submit="{ label: 'Sign in', block: true }"
-                :loading="form.processing"
-                @submit="onSubmit"
-            >
-                <template #description>
-                    Don't have an account?
-                    <ULink class="text-primary font-medium">
-                        Sign up
-                    </ULink>
-                </template>
+        <UAuthForm
+            title="Welcome back!"
+            icon="i-lucide-lock"
+            :fields="fields"
+            :providers="providers"
+            :schema="schema"
+            :submit="{ label: 'Sign in', block: true }"
+            :loading="form.processing"
+            @submit="onSubmit"
+        >
+            <template #description>
+                Don't have an account?
+                <ULink class="text-primary font-medium">
+                    Sign up
+                </ULink>
+            </template>
 
-                <template #password-hint>
-                    <ULink
-                        :to="'/forgot-password'"
-                        class="text-primary text-sm font-medium"
-                    >
-                        Forgot password?
-                    </ULink>
-                </template>
+            <template #password-hint>
+                <ULink
+                    :to="'/forgot-password'"
+                    class="text-primary text-sm font-medium"
+                >
+                    Forgot password?
+                </ULink>
+            </template>
 
-                <template #validation>
-                    <UAlert
-                        v-if="form.errors.email"
-                        color="error"
-                        icon="i-lucide-alert-circle"
-                        :title="form.errors.email"
-                    />
-                </template>
+            <template #validation>
+                <UAlert
+                    v-if="form.errors.email"
+                    color="error"
+                    icon="i-lucide-alert-circle"
+                    :title="form.errors.email"
+                />
+            </template>
 
-                <template #footer>
-                    <p class="text-center text-sm text-muted">
-                        By signing in, you agree to our
-                        <ULink class="text-primary font-medium">Terms of Service</ULink>
-                        and
-                        <ULink class="text-primary font-medium">Privacy Policy</ULink>.
-                    </p>
-                </template>
-            </UAuthForm>
-        </div>
+            <template #footer>
+                <p class="text-center text-sm text-muted">
+                    By signing in, you agree to our
+                    <ULink class="text-primary font-medium">Terms of Service</ULink>
+                    and
+                    <ULink class="text-primary font-medium">Privacy Policy</ULink>.
+                </p>
+            </template>
+        </UAuthForm>
     </div>
 </template>
