@@ -25,3 +25,10 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Platform specific
+.DS_Store
+
+# Auto-generated type declarations
+auto-imports.d.ts
+components.d.ts

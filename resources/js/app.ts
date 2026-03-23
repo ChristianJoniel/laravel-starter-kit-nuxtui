@@ -1,6 +1,6 @@
 import { createInertiaApp } from '@inertiajs/vue3';
 import '../css/app.css';
-import ui from '@nuxt/ui/vue-plugin'
+import ui from '@nuxt/ui/vue-plugin';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Sutra';
 
@@ -13,6 +13,6 @@ createInertiaApp({
         }),
     },
     withApp(app) {
-        app.use(ui)
+        app.use(ui);
     },
 });
