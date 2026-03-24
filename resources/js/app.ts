@@ -1,6 +1,11 @@
 import { createInertiaApp } from '@inertiajs/vue3';
-import '../css/app.css';
+import { configureEcho } from '@laravel/echo-vue';
 import ui from '@nuxt/ui/vue-plugin';
+import '../css/app.css';
+
+configureEcho({
+    broadcaster: 'reverb',
+});
 
 const appName = import.meta.env.VITE_APP_NAME || 'Nuxt UI Starter Kit';
 
