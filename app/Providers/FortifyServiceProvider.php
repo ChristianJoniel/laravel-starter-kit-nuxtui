@@ -43,6 +43,8 @@ class FortifyServiceProvider extends ServiceProvider
             'email' => $request->query('email'),
         ]));
 
+        Fortify::verifyEmailView(fn () => Inertia::render('Auth/VerifyEmail'));
+
         Fortify::twoFactorChallengeView(fn () => Inertia::render('Auth/TwoFactorChallenge'));
 
         RateLimiter::for('login', function (Request $request) {

@@ -13,6 +13,11 @@ const searchGroups = computed<CommandPaletteGroup[]>(() => [
         label: 'Pages',
         items: [
             { label: 'Home', icon: 'i-lucide-house', to: '/dashboard' },
+            {
+                label: 'Users',
+                icon: 'i-lucide-users-round',
+                to: '/dashboard/users',
+            },
             { label: 'Inbox', icon: 'i-lucide-inbox', to: '/dashboard/inbox' },
             {
                 label: 'Contacts',
@@ -62,6 +67,11 @@ const items: NavigationMenuItem[][] = [
             label: 'Home',
             icon: 'i-lucide-house',
             to: '/dashboard',
+        },
+        {
+            label: 'Users',
+            icon: 'i-lucide-users-round',
+            to: '/dashboard/users',
         },
         {
             label: 'Inbox',
