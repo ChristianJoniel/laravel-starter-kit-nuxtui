@@ -52,8 +52,10 @@ jobs:
       - name: Generate Wayfinder Config
         run: php artisan wayfinder:generate
 
-      - name: Generate Sqlite Database
-        run: php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+      - name: Ensure Sqlite Database Directory and File Exist (CI Fix)
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
 
       - name: Build Assets
         run: npm run build
