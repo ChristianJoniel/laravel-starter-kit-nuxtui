@@ -128,12 +128,23 @@ const items: NavigationMenuItem[][] = [
                 :ui="{ footer: 'border-t border-default' }"
             >
                 <template #header="{ collapsed }">
-                    <AppLogo v-if="!collapsed" class="h-5 w-auto shrink-0" />
-                    <UIcon
-                        v-else
-                        name="i-lucide-zap"
-                        class="mx-auto size-5 text-primary"
-                    />
+                    <div
+                        class="flex w-full items-center"
+                        :class="
+                            collapsed ? 'justify-center' : 'justify-between'
+                        "
+                    >
+                        <AppLogo
+                            v-if="!collapsed"
+                            class="h-5 w-auto shrink-0"
+                        />
+                        <UIcon
+                            v-else
+                            name="i-lucide-zap"
+                            class="size-5 text-primary"
+                        />
+                        <NotificationBell v-if="!collapsed" />
+                    </div>
                 </template>
 
                 <template #default="{ collapsed }">
@@ -169,10 +180,10 @@ const items: NavigationMenuItem[][] = [
 
                         <template #account>
                             <div class="text-left">
-                                <p class="font-medium truncate">
+                                <p class="truncate font-medium">
                                     {{ user?.name }}
                                 </p>
-                                <p class="text-xs text-muted truncate">
+                                <p class="truncate text-xs text-muted">
                                     {{ user?.email }}
                                 </p>
                             </div>
