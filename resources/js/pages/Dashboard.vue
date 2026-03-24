@@ -1,13 +1,43 @@
 <script setup lang="ts">
 import Layout from '@/layouts/admin.vue';
+import type { TabsItem } from '@nuxt/ui';
 
 defineOptions({ layout: Layout });
+
+const items: TabsItem[] = [
+    {
+        label: 'All',
+        value: 'all',
+    },
+    {
+        label: 'Unread',
+        value: 'unread',
+    },
+];
 </script>
 
 <template>
     <UDashboardPanel>
         <template #header>
-            <UDashboardNavbar title="Dashboard" />
+            <UDashboardNavbar title="Inbox">
+                <template #leading>
+                    <UDashboardSidebarCollapse />
+                </template>
+
+                <template #trailing>
+                    <UBadge label="4" variant="subtle" />
+                </template>
+
+                <template #right>
+                    <UTabs
+                        :items="items"
+                        default-value="all"
+                        size="sm"
+                        class="w-40"
+                        :content="false"
+                    />
+                </template>
+            </UDashboardNavbar>
         </template>
 
         <template #body>
