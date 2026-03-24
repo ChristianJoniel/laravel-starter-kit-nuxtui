@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Notifications\UserCreatedNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -41,7 +42,9 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request): RedirectResponse
     {
-        User::query()->create($request->validated());
+        $user = User::query()->create($request->validated());
+
+        $request->user()->notify(new UserCreatedNotification($user));
 
         return redirect()->route('dashboard.users.index')
             ->with('status', 'User created.');
