@@ -22,6 +22,14 @@ import { Link } from '@inertiajs/vue3';
                     color="neutral"
                     variant="ghost"
                 />
+
+                <UButton
+                    label="Log in"
+                    to="/login"
+                    icon="i-lucide-log-in"
+                    color="primary"
+                    variant="subtle"
+                />
             </template>
         </UHeader>
 

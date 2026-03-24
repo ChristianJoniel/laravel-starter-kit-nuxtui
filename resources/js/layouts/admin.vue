@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { usePage } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
 import type { CommandPaletteGroup, NavigationMenuItem } from '@nuxt/ui';
 import { computed } from 'vue';
+import { logout } from '@/routes';
 
 const page = usePage();
 const user = computed(() => page.props.auth.user);
@@ -33,6 +34,26 @@ const searchGroups = computed<CommandPaletteGroup[]>(() => [
             { label: 'New message', icon: 'i-lucide-message-square-plus' },
         ],
     },
+]);
+
+const userMenuItems = computed(() => [
+    [
+        {
+            label: user.value?.name,
+            slot: 'account' as const,
+            disabled: true,
+        },
+    ],
+    [
+        {
+            label: 'Log out',
+            icon: 'i-lucide-log-out',
+            onSelect: () => {
+                router.flushAll();
+                router.post(logout.url());
+            },
+        },
+    ],
 ]);
 
 const items: NavigationMenuItem[][] = [
@@ -117,17 +138,30 @@ const items: NavigationMenuItem[][] = [
                 </template>
 
                 <template #footer="{ collapsed }">
-                    <UButton
-                        :avatar="{
-                            src: user?.avatar,
-                            alt: user?.name,
-                        }"
-                        :label="collapsed ? undefined : user?.name"
-                        color="neutral"
-                        variant="ghost"
-                        class="w-full"
-                        :block="collapsed"
-                    />
+                    <UDropdownMenu :items="userMenuItems">
+                        <UButton
+                            :avatar="{
+                                src: user?.avatar,
+                                alt: user?.name,
+                            }"
+                            :label="collapsed ? undefined : user?.name"
+                            color="neutral"
+                            variant="ghost"
+                            class="w-full"
+                            :block="collapsed"
+                        />
+
+                        <template #account>
+                            <div class="text-left">
+                                <p class="font-medium truncate">
+                                    {{ user?.name }}
+                                </p>
+                                <p class="text-xs text-muted truncate">
+                                    {{ user?.email }}
+                                </p>
+                            </div>
+                        </template>
+                    </UDropdownMenu>
                 </template>
             </UDashboardSidebar>
 

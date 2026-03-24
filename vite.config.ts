@@ -19,6 +19,7 @@ export default defineConfig(({ command }) => ({
         }),
         inertia(),
         ui({
+            autoImport: true,
             inertia: true,
             components: {
               dirs: ['resources/js/components'],
