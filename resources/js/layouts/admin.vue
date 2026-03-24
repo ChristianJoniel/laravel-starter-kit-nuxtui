@@ -96,6 +96,12 @@ const items: NavigationMenuItem[][] = [
             to: 'https://github.com/nuxt/ui',
             target: '_blank',
         },
+        {
+            label: 'Telescope',
+            icon: 'i-lucide-telescope',
+            to: '/telescope',
+            target: '_blank',
+        },
     ],
 ];
 </script>
