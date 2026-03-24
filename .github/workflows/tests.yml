@@ -52,6 +52,9 @@ jobs:
       - name: Generate Wayfinder Config
         run: php artisan wayfinder:generate
 
+      - name: Generate Sqlite Database
+        run: php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+
       - name: Build Assets
         run: npm run build
 
