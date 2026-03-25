@@ -49,6 +49,11 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
+      - name: Generate Sqlite Database
+        run: php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+
+      - name: Generate Wayfinder Config
+        run: php artisan wayfinder:generate
 
       - name: Build Assets
         run: npm run build
