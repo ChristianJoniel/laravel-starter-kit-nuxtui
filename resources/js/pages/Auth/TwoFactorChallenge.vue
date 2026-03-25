@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import { z } from 'zod';
 import AuthLayout from '@/layouts/auth.vue';
-import { store } from '@/routes/two-factor/login';
+import { store } from '@/wayfinder/routes/two-factor/login';
 
 defineOptions({ layout: AuthLayout });
 

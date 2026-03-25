@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useForm, usePage } from '@inertiajs/vue3';
 import AuthLayout from '@/layouts/auth.vue';
-import { store } from '@/routes/login';
+import { store } from '@/wayfinder/routes/login';
 
 defineOptions({ layout: AuthLayout });
  

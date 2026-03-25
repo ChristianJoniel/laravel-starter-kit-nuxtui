@@ -2,7 +2,7 @@
 import { useForm, usePage } from '@inertiajs/vue3';
 
 import AuthLayout from '@/layouts/auth.vue';
-import { send } from '@/routes/verification';
+import { send } from '@/wayfinder/routes/verification';
 
 defineOptions({ layout: AuthLayout });
 

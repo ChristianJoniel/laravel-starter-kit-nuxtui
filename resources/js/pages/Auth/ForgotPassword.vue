@@ -2,7 +2,7 @@
 import { useForm, usePage } from '@inertiajs/vue3';
 
 import AuthLayout from '@/layouts/auth.vue';
-import { email } from '@/routes/password';
+import { email } from '@/wayfinder/routes/password';
 
 defineOptions({ layout: AuthLayout });
 

@@ -2,7 +2,7 @@
 import { router, usePage } from '@inertiajs/vue3';
 import type { CommandPaletteGroup, NavigationMenuItem } from '@nuxt/ui';
 import { computed } from 'vue';
-import { logout } from '@/routes';
+import { logout } from '@/wayfinder/routes';
 
 const page = usePage();
 const user = computed(() => page.props.auth.user);
